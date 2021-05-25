@@ -1,5 +1,5 @@
 info:
-  component: Hystrix Dashboard
+  component: hystrixdashboard
 
 endpoints:
   restart:
@@ -20,11 +20,11 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://127.0.0.1:8761/eureka/
+      defaultZone: http://eureka:8761/eureka/
   instance:
     leaseRenewalIntervalInSeconds: 5
     leaseExpirationDurationInSeconds: 5
     preferIpAddress: false
     metadataMap:
-      hostname: ${vcap.application.application_uris[0]}
-      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${random.value}}}
+      hostname: hystrixdashboard
+      instanceId: hystrixdashboard:7979

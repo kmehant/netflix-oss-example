@@ -6,7 +6,7 @@ info:
 
 spring:
   application:
-    name: config-service
+    name: configservice
 #  profiles:
 #    active: native  # For local file repository only
   cloud:

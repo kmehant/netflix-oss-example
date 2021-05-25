@@ -78,7 +78,7 @@ docker build -t client-traffic-generator .
 The following command starts a new container named ```client-traffic-generator``` from the ```client-traffic-generator``` image. It maps port 9094 so that it can be reachable.
 
 ```
-docker run -p 9094:9094 -d --name client-traffic-generator -e "spring.profiles.active=docker" --add-host eureka-server-docker:<eureka server ip>  --add-host config-service-docker:<config service ip> client-traffic-generator
+docker run -p 9094:9094 -d --name client-traffic-generator -e "spring.profiles.active=docker" --add-host eureka-server-docker:<eureka server ip>  --add-host configservice:<config service ip> client-traffic-generator
 ```
 
 To find out the ip of the eureka can config service you can use the following command:

@@ -3,4 +3,4 @@ spring:
     name: hystrixdashboard
   cloud:
     config:
-      uri: http://localhost:8888
+      uri: http://configservice:8888

@@ -1,23 +1,32 @@
-#
-# Dockerfile for Service B
-#
+# #
+# # Dockerfile for Service B
+# #
 
-FROM java:8
+# FROM java:8
 
-MAINTAINER Oreste Luci
 
-# Install netcat
-RUN apt-get update && apt-get install -y netcat
 
-VOLUME /tmp
+# # Install netcat
+# # RUN apt-get update && apt-get install -y netcat
 
-WORKDIR /service-b
+# VOLUME /tmp
 
-ADD target/service-b.jar service-b.jar
+# WORKDIR /service-b
 
-RUN bash -c 'touch /service-b.jar'
+# ADD target/service-b.jar service-b.jar
 
-ADD run.sh run.sh
-RUN chmod 744 run.sh
+# RUN bash -c 'touch /service-b.jar'
 
-CMD ["./run.sh","service-b.jar"]
+# ADD run.sh run.sh
+# RUN chmod 744 run.sh
+
+# CMD ["./run.sh","service-b.jar"]
+
+FROM openjdk:8
+RUN apt-get update
+RUN apt-get install -y curl
+
+
+ADD ./target/service-b.jar service-b.jar
+
+ENTRYPOINT ["java","-jar","/service-b.jar"]

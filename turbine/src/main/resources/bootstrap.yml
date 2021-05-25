@@ -12,8 +12,8 @@ spring:
     name: turbine
   cloud:
     config:
-      failFast: true  # Will not start service if no config server found
-      uri: http://localhost:8888 # Location of config server (needed if discovery.enabled=false)
+      failFast: false  # Will not start service if no config server found
+      uri: http://configservice:8888 # Location of config server (needed if discovery.enabled=false)
 
 ---
 
@@ -21,6 +21,6 @@ spring:
   profiles: docker
   cloud:
     config:
-      uri: http://config-service-docker:8888
+      uri: http://configservice:8888
   rabbitmq:
-    addresses: rabbit-mq-server:5672
+    addresses: rabbitmq:5672

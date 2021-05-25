@@ -4,10 +4,10 @@
 
 FROM java:8
 
-MAINTAINER Oreste Luci
+
 
 # Install netcat
-RUN apt-get update && apt-get install -y netcat
+# RUN apt-get update && apt-get install -y netcat
 
 VOLUME /tmp
 

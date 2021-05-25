@@ -1,23 +1,33 @@
-#
-# Dockerfile for Service C
-#
+# #
+# # Dockerfile for Service C
+# #
 
-FROM java:8
+# FROM java:8
 
-MAINTAINER Oreste Luci
 
-# Install netcat
-RUN apt-get update && apt-get install -y netcat
 
-VOLUME /tmp
+# # Install netcat
+# # RUN apt-get update && apt-get install -y netcat
 
-WORKDIR /client-traffic-generator
+# VOLUME /tmp
 
-ADD target/client-traffic-generator.jar client-traffic-generator.jar
+# WORKDIR /client-traffic-generator
 
-RUN bash -c 'touch /client-traffic-generator.jar'
+# ADD target/client-traffic-generator.jar client-traffic-generator.jar
 
-ADD run.sh run.sh
-RUN chmod 744 run.sh
+# RUN bash -c 'touch /client-traffic-generator.jar'
 
-CMD ["./run.sh","client-traffic-generator.jar"]
+# ADD run.sh run.sh
+# RUN chmod 744 run.sh
+
+# CMD ["./run.sh","client-traffic-generator.jar"]
+
+
+FROM openjdk:8
+RUN apt-get update
+RUN apt-get install -y curl
+
+
+ADD ./target/client-traffic-generator.jar client-traffic-generator.jar
+
+ENTRYPOINT ["java","-jar","/client-traffic-generator.jar"]

@@ -13,10 +13,10 @@ spring:
     name: serviceC
   cloud:
     config:
-      failFast: true  # Will not start service if no config server found
+      failFast: false  # Will not start service if no config server found
       env: default # optional
       label: master # optional
-      uri: http://localhost:8888 # Location of config server (needed if discovery.enabled=false)
+      uri: http://configservice:8888 # Location of config server (needed if discovery.enabled=false)
 
 # Discovery has an issue https://github.com/spring-cloud/spring-cloud-config/issues/93
 #      discovery:
@@ -29,6 +29,6 @@ spring:
   profiles: docker
   cloud:
     config:
-      uri: http://config-service-docker:8888
+      uri: http://configservice:8888
   rabbitmq:
-    addresses: rabbit-mq-server:5672
+    addresses: rabbitmq:5672
